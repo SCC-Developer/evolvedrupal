@@ -1,0 +1,35 @@
+name: simple
+type: theme
+'base theme': stable9
+starterkit: true
+version: VERSION
+libraries:
+  - simple/base
+  - simple/messages
+  - core/normalize
+  - simple/global
+libraries-extend:
+  user/drupal.user:
+    - simple/user
+  core/drupal.dropbutton:
+    - simple/dropbutton
+  core/drupal.dialog:
+    - simple/dialog
+  file/drupal.file:
+    - simple/file
+  core/drupal.progress:
+    - simple/progress
+core_version_requirement: ^10
+generator: 'starterkit_theme:10.1.2'
+regions:
+  header: 'Header'
+  primary_menu: 'Primary menu'
+  secondary_menu: 'Secondary menu'
+  highlighted: 'Highlighted'
+  help: 'Help'
+  breadcrumb: 'Breadcrumb'
+  content: 'Content'
+  sidebar_first: 'Left sidebar'
+  sidebar_second: 'Right sidebar'
+  social: 'Social'
+  footer: 'Footer'
