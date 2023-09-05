@@ -1,0 +1,8 @@
+# Schema for the configuration files of the AL Theme theme.
+al_theme.settings:
+  type: theme_settings
+  label: 'AL Theme settings'
+  mapping:
+    font_size:
+      type: integer
+      label: Font size

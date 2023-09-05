@@ -4,6 +4,7 @@ type: theme
 starterkit: true
 version: VERSION
 libraries:
+  - simple/bootstrap
   - simple/base
   - simple/messages
   - core/normalize
