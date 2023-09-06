@@ -48,3 +48,36 @@ function simple_theme_suggestions_page_title_alter(array &$suggestions, array &$
     $suggestions[] = 'page_title__node__' . $node->getType();
   }
 }
+
+// Create drupal settings for dark mode
+function simple_preprocess_block(&$variables) {
+  if (isset($variables['content']['#block_content'])) {
+    $block = $variables['content']['#block_content'];
+    if ($block->bundle() === 'button' ) {
+      $variables['#attached']['drupalSettings']['simple']['dark_mode']['label'] = $block->field_button_label->value;
+    }
+  }
+}
+
+// Apply the font_size info to the legal section on the footer of the page.html.twig
+function simple_preprocess_page(&$variables) {
+  $variables['legal'] = theme_get_setting('font_size');
+}
+
+// Creating/altering theme settings for appearance page
+function simple_form_system_theme_settings_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+// Create the accordion
+  $form['simple'] = [
+    '#type' => 'details',
+    '#title' => t('Simple theme settings'),
+    '#open' => TRUE,
+  ];
+// Place option within the above accordion
+  $form['simple']['font_size'] = [
+    '#type' => 'number',
+    '#title' => t('Font size'),
+    '#min' => 12,
+    '#max' => 18,
+    '#default_value' => theme_get_setting('font_size'),
+  ];
+}
