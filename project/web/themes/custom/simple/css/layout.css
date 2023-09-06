@@ -6,3 +6,11 @@
         gap: 1rem;
     }
 } */
+
+.page-title-banner {
+    background-color: #3D977D;
+    color: white;
+    background-size: cover;
+    background-position: center center;
+    padding: 1rem;
+}
