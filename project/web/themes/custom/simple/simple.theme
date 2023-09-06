@@ -19,3 +19,25 @@ function simple_preprocess_image_widget(array &$variables) {
     unset($data['preview']);
   }
 }
+
+// CUSTOM CODE
+function simple_preprocess_page_title(&$variables) {
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    // $variables['pretitle'] = $node->getType() == 'article' ? '' : $node->getType();
+    $variables['pretitle'] = $node->getType();
+    if ($node->getType() == 'article') {
+      $variables['article_image_uri'] = $node->field_image->entity->getFileUri();
+    }
+  }
+  else {
+    $variables['pretitle'] = t('Hello World');
+  }
+}
+
+function simple_theme_suggestions_page_title_alter(array &$suggestions, array &$variables) {
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    // The below name suggestions needs to be underscores to be viewed as dashes
+    $suggestions[] = 'page_title__node';
+    $suggestions[] = 'page_title__node__' . $node->getType();
+  }
+}
