@@ -9,6 +9,7 @@ libraries:
   - simple/messages
   - core/normalize
   - simple/global
+  - simple/fontawesome
 libraries-extend:
   user/drupal.user:
     - simple/user
