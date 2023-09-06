@@ -45,11 +45,20 @@
 <div class="layout-container">
 
   <header role="banner">
-    {{ page.header }}
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">{{ page.header }}</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          {{ page.primary_menu }}
+          {{ page.secondary_menu }}
+        </div>
+      </div>
+    </nav>
   </header>
 
-  {{ page.primary_menu }}
-  {{ page.secondary_menu }}
 
   {{ page.breadcrumb }}
 
