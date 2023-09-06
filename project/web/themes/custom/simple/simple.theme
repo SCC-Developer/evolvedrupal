@@ -21,20 +21,27 @@ function simple_preprocess_image_widget(array &$variables) {
 }
 
 // CUSTOM CODE
+// For the page title
 function simple_preprocess_page_title(&$variables) {
+  // Check to see if we're in a node
   if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    // Set pretitle to be the node type
     // $variables['pretitle'] = $node->getType() == 'article' ? '' : $node->getType();
     $variables['pretitle'] = $node->getType();
+    // If the type is article, get the image URI from the node
     if ($node->getType() == 'article') {
       $variables['article_image_uri'] = $node->field_image->entity->getFileUri();
     }
   }
+  // If we're not in a node, add the default pretitle
   else {
     $variables['pretitle'] = t('Hello World');
   }
 }
 
+// Theme suggestions for 'page_title'. First line is standard code 
 function simple_theme_suggestions_page_title_alter(array &$suggestions, array &$variables) {
+  // If it's a node, do the following
   if ($node = \Drupal::routeMatch()->getParameter('node')) {
     // The below name suggestions needs to be underscores to be viewed as dashes
     $suggestions[] = 'page_title__node';
